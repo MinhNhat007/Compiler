@@ -9,7 +9,7 @@ public class Token {
       this.symbol = _symbol;
       this.color = _color;
     }
-    
+
     public String getSymbol() {
       return symbol;
     }
@@ -24,6 +24,44 @@ public class Token {
 
     public void setColor(String color) {
       this.color = color;
+    }
+
+    private Token getOuterType() {
+      return Token.this;
+    }
+    
+    @Override
+    public int hashCode() {
+      final int prime = 31;
+      int result = 1;
+      result = prime * result + getOuterType().hashCode();
+      result = prime * result + ((color == null) ? 0 : color.hashCode());
+      result = prime * result + ((symbol == null) ? 0 : symbol.hashCode());
+      return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+      if (this == obj)
+        return true;
+      if (obj == null)
+        return false;
+      if (getClass() != obj.getClass())
+        return false;
+      Content other = (Content) obj;
+      if (!getOuterType().equals(other.getOuterType()))
+        return false;
+      if (color == null) {
+        if (other.color != null)
+          return false;
+      } else if (!color.equals(other.color))
+        return false;
+      if (symbol == null) {
+        if (other.symbol != null)
+          return false;
+      } else if (!symbol.equals(other.symbol))
+        return false;
+      return true;
     }
   }
   
