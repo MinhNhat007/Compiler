@@ -1,5 +1,8 @@
 package com.compiler.scanner;
 
+/**
+ * Class Token representing token with symbol and color
+ */
 public class Token {
   public class Content{
     private String symbol;
